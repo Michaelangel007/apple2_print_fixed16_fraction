@@ -8,7 +8,9 @@ For example, the number `0.7106` in 16-bit fixed point is 0.71506 * 65536 = 46,5
 
 How do we convert the number `$B5E9` back into `.7106` ? By _digit peeling._
 
-1. Multipy N by 10
+Given a fractional number `N` represented as 16-bit integer then:
+
+1. Multiply N by 10
 2. Print the Integer Part digit
 3. Set the Integer Part to zero
 5. Have we printed the number of decimal digits we want? If no then goto step 1
