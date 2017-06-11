@@ -1,10 +1,42 @@
 # Print Fixed Point #.16 Fraction
 
-# Assembly (Source)
+# Theory
+
+Printing the fractional value of a 16-bit fixed point number in decimal is rather trivial.
+
+For example, the number `0.7106` in 16-bit fixed point is 0.71506 * 65536 = 46,569 = `$B5E9`
+
+How do we convert the number `$B5E9` back into `7106` ? By _digit peeling._
+
+1. Multipy N by 10
+2. Print the Integer Part digit
+3. Set the Integer Part to zero
+5. Have we printed the number of decimal digits we want? If no then goto step 1
+
+Example:
+
+```
+    0.7106 * 65536 = $B5E9
+                                  '.'
+                     $B5E9 * $A = $7.1B1A
+                     $1B1A * $A = $1.0F04
+                     $0F04 * $A = $0.9628
+                     $9628 * $A = $5.DD90
+                     $5DD9 * $A = $8.A7A0
+
+    0.71058 _______________________^
+```
+
+An optimization for N*10 is that this is equivalent to: `N*8 + N*2`
+
+
+# Application
+
+## Assembly (Source)
 
 See file [print_fract.s](print_fract.s)
 
-# Binary (Executable)
+## Binary (Executable)
 
 ```
     CALL-151
@@ -19,9 +51,9 @@ See file [print_fract.s](print_fract.s)
     800G
 ```
 
-# Output
+## Output
 
 ```
-71508
+71058
 ```
 
