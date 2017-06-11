@@ -1,5 +1,7 @@
         ORG $800
 
+COUT EQU $FDED
+
 ; ==================== Demo ====================
 
 Demo
@@ -17,10 +19,12 @@ Demo
         LDY #$E9
         JSR PrintFract
 
+        LDA #'.'+$80
+        JSR COUT
         LDX #0
 PrintDigit
         LDA D0,X
-        JSR $FDED
+        JSR COUT
         INX
         CPX #5          ; 5 decimal digits
         BNE PrintDigit
