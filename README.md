@@ -1,4 +1,4 @@
-# Print Fixed Point #.16 Fraction
+# Print 16-bit Fixed Point Fraction
 
 # Theory
 
@@ -6,14 +6,15 @@ Printing the fractional value of a 16-bit fixed point number in decimal is rathe
 
 For example, the number `0.7106` in 16-bit fixed point is 0.71506 * 65536 = 46,569 = `$B5E9`
 
-How do we convert the number `$B5E9` back into `.7106` ? By _digit peeling._
+* Q. How do we convert the number `$B5E9` back into `.7106` ?
+* Q. By _digit peeling._
 
-Given a fractional number `N` represented as 16-bit integer then:
+Given a fractional number `N` represented as a 16-bit integer then the pseudo-code is:
 
 1. Multiply N by 10
-2. Print the Integer Part digit
+2. Print the Integer Part of `N` (a digit)
 3. Set the Integer Part to zero
-5. Have we printed the number of decimal digits we want? If no then goto step 1
+5. Have we printed the total number of decimal digits we want? If no then goto step 1
 
 Example:
 
