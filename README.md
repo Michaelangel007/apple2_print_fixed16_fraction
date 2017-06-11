@@ -18,18 +18,20 @@ Given a fractional number `N` represented as 16-bit integer then:
 Example:
 
 ```
-    0.7106 * 65536 = $B5E9
-                                  '.'
+     +-----------------------------+
+     |                             |
+    0.7106 * 65536 = $B5E9         |
+                       |           |
+                       |           v
+                       v          '.'
                      $B5E9 * $A = $7.1B1A
                      $1B1A * $A = $1.0F04
                      $0F04 * $A = $0.9628
                      $9628 * $A = $5.DD90
                      $5DD9 * $A = $8.A7A0
-
-    0.71058 _______________________^
 ```
 
-An optimization for N*10 is that this is equivalent to: `N*8 + N*2`
+An optimization for `N*10` is that this is equivalent to: `N*8 + N*2`
 
 
 # Application
